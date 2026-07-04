@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="<width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="weather.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="searchbar">
+        <div class="searchparentdiv">
+            <input type="text" class="inputfield" placeholder="Enter city name">
+            <img src="search.png" class="searchicon" onclick="fetchData()">
+        </div> 
+    </div>
+    <div class="maincontentparentdiv">
+        <div class="leftdiv">
+            <div class="tempdiv leftChild ">
+                <h6 id="cityname">City Name</h6>
+                <h5 ><span id="cityTemp">0</span>°C</h5>
+                <h6 id="weatherCondition">Weather Condition</h6>
+                <hr id="hrline">
+                <div style="display:flex;align-items: center;padding: 0; margin: 0;gap:5px;">
+                    <img src="calendar.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                    <h6 id="curentdate">Date </h6>
+                </div>
+                <div style="display: flex;align-items:center;padding: 0; margin: 0 ;gap:5px;">
+                    <img src="clock.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                    <h6 id="curenttime">Time </h6>
+                </div>
+
+            </div> 
+            <div class="next5div leftChild" style="padding: 20px;margin:0;padding: 20px; gap: 10px;">
+                <h6>Coming 5 days</h6>
+                <div class="next5itemsdiv">
+                    <div class="next5items">
+                        <img src="clear-sky.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                        <h6 ><span id="deg1">7</span>&deg;C</h6>
+                        <h6 style="margin-left: 10px;" id="date1">Date</h6>
+                        <h6 style="margin-left: 10px;"id="time1">Time</h6>
+                    </div>
+                    <div class="next5items">
+                        <img src="clear-sky.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                        <h6><span id="deg2">7</span>&deg;C</h6>
+                        <h6 style="margin-left: 10px;" id="date2">Date</h6>
+                        <h6 style="margin-left: 10px;"id="time2">Time</h6>
+                    </div>
+                    <div class ="next5items">
+                        <img src="clear-sky.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                        <h6><span id="deg3">7</span>&deg;C</h6>
+                        <h6 style="margin-left: 10px;"id="date3">Date</h6>
+                        <h6 style="margin-left: 10px;"id="time3">Time</h6>
+                    </div>
+                    <div class="next5items">
+                        <img src="clear-sky.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                        <h6><span id="deg4">7</span>&deg;C</h6>
+                        <h6 style="margin-left: 10px;"id="date4">Date</h6>
+                        <h6 style="margin-left: 10px;"id="time4">Time</h6>
+                    </div>
+                    <div class="next5items">
+                        <img src="clear-sky.png" width="20px" height="20px" style="padding: 0; margin: 0;">
+                        <h6><span id="deg5">7</span>&deg;C</h6>
+                        <h6 style="margin-left: 10px;"id="date5">Date</h6>
+                        <h6 style="margin-left: 10px;"id="time5">Time</h6>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="rightdiv">
+            <div class="rightrow rowone" >
+                <div class="extremetric" style="display: flex;align-items: center;gap: 10px;">
+                    <img src="wind.png" width="20px" height="20px">
+                    <div  style="text-align: center;">   
+                    <h6 style="margin: 0;margin-bottom: 10px;" >Humidity</h6>
+                    <h6 style="margin: 0;"id="humidityValue">metric value</h6>
+                    </div>
+                </div>
+                <div class="extremetric" style="display: flex;align-items: center;gap: 10px;">
+                    <img src="wind.png" width="20px" height="20px">
+                    <div style="text-align: center;">   
+                    <h6 style="margin: 0;margin-bottom: 10px;">Pressure</h6>
+                    <h6 style="margin: 0;" id="pressureValue">metric value</h6>
+                    </div>
+                </div>
+                <div class="extremetric" style="display: flex;align-items: center;gap: 10px;">
+                    <img src="wind.png" width="20px" height="20px">
+                    <div style="text-align: center;">   
+                    <h6 style="margin: 0;margin-bottom: 10px;">Sea level</h6>
+                    <h6 style="margin: 0;" id="seaLevelValue">metric value</h6>
+                    </div>
+                </div>
+                <div class="extremetric" style="display: flex;align-items: center;gap: 10px;">
+                    <img src="wind.png" width="20px" height="20px">
+                    <div style="text-align: center;">   
+                    <h6 style="margin: 0;margin-bottom: 10px;">Ground level</h6>
+                    <h6 style="margin: 0;" id="grdlevelValue">metric value</h6>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="rightrow rowtwo">
+                <div class="AQI rowtwodiv">
+                    <h5 style="font-size: xx-large;margin:20px 0 0 0;">Air Quality Index(AQI)</h5>
+                    <div style="display: flex;align-items: center;gap: 20px; width: 100%;">
+                        <img src="wind-sign.png" width="50px" height="50px" style="padding: 0; margin: 0;padding-left: 10px;">
+                        <diV style="text-align: center;width: 20%;">
+                            <h6 >CO</h6>
+                            <h6 id="co2Value">AQI metric value</h6>
+                        </diV>
+                        <diV style="text-align: center;width: 20%;">
+                            <h6 >O3</h6>
+                            <h6 id="o3Value">AQI metric value</h6>
+                        </diV>
+                        <diV style="text-align: center;width: 20%;">
+                            <h6 >NO2</h6>
+                            <h6 id="no2Value" >AQI metric value</h6>
+                        </diV>
+                        <diV style="text-align: center;width: 20%;">
+                            <h6 >SO2</h6>
+                            <h6 id="so2Value">AQI metric value</h6>
+                        </diV>
+                    </div>
+
+                </div>
+                <div class="sunrise rowtwodiv" >
+                    <h5 style="font-size: xx-large;margin:20px 0 0 0;">Sunrise & Sunset</h5>
+                    <div style="display: flex;justify-content:space-between;margin: 20px;">
+                        <div class="sunrisediv" style="display: flex;align-items: center;gap: 10px;;">
+                            <image src="sun.png" width="75px" height="75px"></image>
+                            <div style="text-align: center;">
+                                <h6 style="margin: 0;font-size: large;">Sunrise</h6>
+                                <h6 style="margin: 0;font-size: large;"id="sunriseTime">05:55am</h6>
+                            </div>
+                        </div>
+                        <div class="sunrisediv" style="display: flex;align-items: center;gap: 10px;padding-right: 10px;">
+                            <image src="crescent-moon.png" width="65px" height="65px"></image>
+                            <div style="text-align: center;">
+                                <h6 style="margin: 0;font-size: large;">Sunset</h6>
+                                <h6 style="margin: 0;font-size: large;"id="sunsetTime">05:55pm</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="rightrow rowthree">
+                <h5 style="margin:0;padding: 10px 0 ;font-size: medium;">Today</h5>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="timezone" style="display: flex;flex-direction: column;align-items: center;"> 
+                        <h6>12:00am</h6>
+                        <img src="cloudy.png" width="35px" height="34px">
+                        <h6 id="12value">27 &deg;c</h6>
+                    </div>
+                    <div class="timezone" style="display: flex;flex-direction: column;align-items: center;"> 
+                        <h6>03:00pm</h6>
+                        <img src="weather-app.png" width="35px" height="35px">
+                        <h6 id="03value">24 &deg;c</h6>
+                    </div>
+                    <div class="timezone" style="display: flex;flex-direction: column;align-items:center;"> 
+                        <h6>06:00pm</h6>
+                        <img src="heavy-rain.png" width="35px" height="35px">
+                        <h6 id="06value">18 &deg;c</h6>
+                    </div>
+                    <div class="timezone" style="display: flex;flex-direction: column;align-items:center;"> 
+                        <h6>09:00pm</h6>
+                        <img src="cloudy.png" width="35px" height="35px">
+                        <h6 id="09value">16 &deg;c</h6>
+                    </div>
+                    <div class="timezone" style="display: flex;flex-direction: column;align-items:center;"> 
+                        <h6>12:00pm</h6>
+                        <img src="snow.png" width="35px" height="35px">
+                        <h6 id="00value">10 &deg;c</h6>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <script>
+        function dateFormate(timestamp){
+            const date=new Date(timestamp*1000);
+            console.log(date.toUTCString());
+            console.log(date.toLocaleString());
+            return date.toLocaleString();
+        }
+        async function fetchData(){
+        
+            let cityName=document.getElementsByClassName('inputfield')[0].value;
+            let requestData= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=78c1a223a0c04b53a4cf36c303850483&units=metric`);
+            let formatedData= await requestData.json();
+            console.log('formated:',formatedData);
+            if(formatedData.cod !== 200){
+                    alert("City not found");
+                    return;
+            }
+            let resposeCityName= formatedData.name
+            let resposeCityTemp= formatedData.main.temp
+            let resposeCityDis= formatedData.weather[0].description
+            $('#cityname')[0].innerText=resposeCityName;
+            $('#cityTemp')[0].innerText=resposeCityTemp;
+            $('#weatherCondition')[0].innerText=resposeCityDis;
+            let properDate=dateFormate(formatedData.dt);
+            let date=properDate.split(',')[0];
+            let time=properDate.split(',')[1];
+            $('#curentdate')[0].innerText=date;
+            $('#curenttime')[0].innerText=time;
+            let sunriseTimeStamp=formatedData.sys.sunrise
+            let sunsetTimeStamp=formatedData.sys.sunset
+            let propersunrise=dateFormate(sunriseTimeStamp).split(',')[1];
+            let propersunset=dateFormate(sunsetTimeStamp).split(',')[1];
+            $('#sunriseTime')[0].innerText=propersunrise;
+            $('#sunsetTime')[0].innerText=propersunset;
+            let humidity=formatedData.main.humidity;
+            let pressure=formatedData.main.pressure;
+            let sealevel=formatedData.main.sea_level;
+            let grdlevel=formatedData.main.grnd_level;
+            $('#humidityValue')[0].innerText=humidity;
+            $('#pressureValue')[0].innerText=pressure;
+            $('#seaLevelValue')[0].innerText=sealevel;
+            $('#grdlevelValue')[0].innerText=grdlevel;
+            
+
+
+
+            let lat=formatedData.coord.lat;
+            let lon=formatedData.coord.lon;
+            fetchAQIdata(lat,lon)
+            forcastData(lat,lon)
+        }
+        async function fetchAQIdata(lat,lon) 
+        {
+            let fetchAPIdata=await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=78c1a223a0c04b53a4cf36c303850483`);
+            let formattedData=await fetchAPIdata.json()
+            let co=formattedData.list[0].components.co;
+            let no2=formattedData.list[0].components.no2;
+            let so2=formattedData.list[0].components.so2;
+            let o3=formattedData.list[0].components.o3;
+            $('#co2Value')[0].innerText= co;
+            $('#no2Value')[0].innerText= no2;
+            $('#so2Value')[0].innerText= so2;
+            $('#o3Value')[0].innerText= o3;
+            
+        }
+        async function forcastData(lat,lon) {
+            let fetchforcastData=await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=78c1a223a0c04b53a4cf36c303850483&units=metric`)
+            let formatttedData=await fetchforcastData.json();
+            console.log(formatttedData)
+            let noon1=formatttedData.list[0].main.temp
+            $('#12value')[0].innerText=noon1
+
+            let noon2=formatttedData.list[1].main.temp
+            $('#03value')[0].innerText=noon2
+
+            let noon3=formatttedData.list[2].main.temp
+            $('#06value')[0].innerText=noon3
+
+            let noon4=formatttedData.list[3].main.temp
+            $('#09value')[0].innerText=noon4
+
+            let noon5=formatttedData.list[4].main.temp
+            $('#00value')[0].innerText=noon5
+            
+            let cob1=formatttedData.list[7].dt;
+            let properdata1=dateFormate(cob1).split(',')
+            let date1=properdata1[0]
+            $('#date1')[0].innerText=date1
+            let time1=properdata1[1]
+            $('#time1')[0].innerText=time1
+            let temp1=formatttedData.list[7].main.temp
+            $('#deg1')[0].innerText=temp1
+
+            let cob2=formatttedData.list[15].dt;
+            let properdata2=dateFormate(cob2).split(',')
+            let date2=properdata2[0]
+            $('#date2')[0].innerText=date2
+            let time2=properdata2[1]
+            $('#time2')[0].innerText=time2
+            let temp2=formatttedData.list[15].main.temp
+            $('#deg2')[0].innerText=temp2
+
+            let cob3=formatttedData.list[23].dt;
+            let properdata3=dateFormate(cob3).split(',')
+            let date3=properdata3[0]
+            $('#date3')[0].innerText=date3
+            let time3=properdata3[1]
+            $('#time3')[0].innerText=time3
+            let temp3=formatttedData.list[23].main.temp
+            $('#deg3')[0].innerText=temp3
+            
+            let cob4=formatttedData.list[31].dt;
+            let properdata4=dateFormate(cob4).split(',')
+            let date4=properdata4[0]
+            $('#date4')[0].innerText=date4
+            let time4=properdata4[1]
+            $('#time4')[0].innerText=time4
+            let temp4=formatttedData.list[31].main.temp
+            $('#deg4')[0].innerText=temp4
+
+            let cob5=formatttedData.list[39].dt;
+            let properdata5=dateFormate(cob5).split(',')
+            let date5=properdata5[0]
+            $('#date5')[0].innerText=date5
+            let time5=properdata5[1]
+            $('#time5')[0].innerText=time5
+            let temp5=formatttedData.list[39].main.temp
+            $('#deg5')[0].innerText=temp5
+        }
+    </script>
+
+</body>
+</html>
